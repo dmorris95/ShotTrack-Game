@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="ShotTrack.Views.UserLeaders"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShotTrack.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <StackPanel Background="White" Orientation="Vertical">
+        <Label HorizontalAlignment="Center" FontSize="25" Padding="0,30,0,0">Top 10 Highest Scores</Label>
+        <Grid>
+            
+        </Grid>
+    </StackPanel>
+</UserControl>

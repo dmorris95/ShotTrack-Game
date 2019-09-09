@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ShotTrack.Game"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShotTrack"
+      xmlns:local1="clr-namespace:ShotTrack.ViewModels"
+      mc:Ignorable="d" d:DesignWidth="1000" Height="525">
+    <UserControl.DataContext>
+        <local1:GameViewModel/>
+    </UserControl.DataContext>
+    <UserControl.InputBindings>
+        <KeyBinding Key="Left" Command="{Binding Path=LeftKeyCommand}" />
+        <KeyBinding Key="Right" Command="{Binding Path=RightKeyCommand}" />
+        <KeyBinding Key="Up" Command="{Binding Path=UpKeyCommand}" />
+    </UserControl.InputBindings>
+    <StackPanel Background="White" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+            <Button Margin="5,0,0,0" HorizontalAlignment="Left" Width="75" Command="{Binding Path=StartGameCommand}">
+                Click to Start Game
+            </Button>
+            <DockPanel HorizontalAlignment="Center" Margin="150,0,0,0" DataContext="{Binding Path=MessageProp}">
+                <Label HorizontalAlignment="Center" Margin="150,0,0,0" Visibility="{Binding Path=VisibilityProp}" Content="{Binding Path=MsgTextProp}"></Label>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <DockPanel DataContext="{Binding Path=CurrentUserScore}">
+                <Label Content="Current Score: " HorizontalAlignment="Left"></Label>
+                <TextBlock Padding="0,0,5,0" VerticalAlignment="Center" Text="{Binding Path=CurScore}" Name="CurrentScoreLabel"></TextBlock>
+            </DockPanel>
+            <DockPanel DataContext="{Binding Path=CurrentUser}">
+                <Label HorizontalContentAlignment="Right">Your Highscore:</Label>
+                <TextBlock Padding="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Path=HighscoreProp}" Name="HighScoreLabel"></TextBlock>
+            </DockPanel>
+        </StackPanel>
+        <Canvas x:Name="TargetCanvs">
+            <Image DataContext="{Binding Path=TargetImage}" Name="TargetImg" Source="/Images/target.png"
+                   Width="75" Height="75"
+                   Canvas.Left="{Binding Path=ImageLeft}" Canvas.Top="{Binding Path=ImageTop}"></Image>
+        </Canvas>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+            <Canvas>
+                <Image DataContext="{Binding Path=ProjectileImage}" Name="ProjectileImg" Source="/Images/projectile.jpg"
+                   Width="50" Height="50"
+                   Canvas.Left="{Binding Path=ImageLeft}" Canvas.Top="{Binding Path=ImageTop}" ></Image>
+            </Canvas>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
